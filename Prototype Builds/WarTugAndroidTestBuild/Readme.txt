@@ -1,5 +1,4 @@
 Scaling is not fully optimised but is funcitonal.
-App needs to lock in landscape mode.
 
 
 Tested on:
