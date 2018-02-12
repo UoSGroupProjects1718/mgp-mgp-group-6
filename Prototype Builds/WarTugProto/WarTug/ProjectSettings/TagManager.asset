@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Background
   - Rope
+  - PS_P1
+  - PS_P2
+  - PS_End
+  - CRAPBALL
   layers:
   - Default
   - TransparentFX
