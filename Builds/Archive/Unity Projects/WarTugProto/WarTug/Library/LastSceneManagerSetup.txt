@@ -1,0 +1,4 @@
+sceneSetups:
+- path: Assets/scenes/resizing tests.unity
+  isLoaded: 1
+  isActive: 1
