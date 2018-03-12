@@ -24,15 +24,15 @@ public class PushController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log("punchControl: update");
+        //Debug.Log("punchControl: update");
         if (GameManager._boolPlayer1Turn == true)
         {
-            Debug.Log("punchControl: transform punch down");
+            //Debug.Log("punchControl: transform punch down");
             this.transform.Translate(-Vector3.up * 0.1f);
         }
         if (GameManager._boolPlayer1Turn == false)
         {
-            Debug.Log("punchControl: transform punch up");
+            //Debug.Log("punchControl: transform punch up");
             this.transform.Translate(Vector3.up * 0.1f);
         }
     }

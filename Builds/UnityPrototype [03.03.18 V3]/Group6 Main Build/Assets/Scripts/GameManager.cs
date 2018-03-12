@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         switch (theGameTurn)
         {
             case GameTurn.PreGame:
-                Debug.Log("GameTurn: PreGame");
+                //Debug.Log("GameTurn: PreGame");
                 player1TextBox.text = "Best score goes first...";
                 player2TextBox.text = "Best score goes first...";
                 preGameCountdown -= Time.deltaTime;
@@ -114,34 +114,34 @@ public class GameManager : MonoBehaviour
                 break;
 
             case GameTurn.DecideTurnPlayer1:
-                Debug.Log("GameTurn: Player1 Decider Attempt");
+                //Debug.Log("GameTurn: Player1 Decider Attempt");
                 player2TextBox.enabled = false;
                 player1TextBox.text = "Player 1 test your timing!";
                 bgRend.material.color = new Color(1.0f, 0.0f, 0.0f);
                 if (Input.GetMouseButtonUp(0))
                 {
-                    Debug.Log("p1attemptclick");
+                    //Debug.Log("p1attemptclick");
                     player1Score = powerMeter.value;
                     theGameTurn = GameTurn.DecideTurnPlayer2;
                 }
                 break;
 
             case GameTurn.DecideTurnPlayer2:
-                Debug.Log("GameTurn: Player2 Decider Attempt");
+                //Debug.Log("GameTurn: Player2 Decider Attempt");
                 player1TextBox.enabled = false;
                 player2TextBox.text = "Player 2 test your timing!";
                 player2TextBox.enabled = true;
                 bgRend.material.color = new Color(0.0f, 0.0f, 1.0f);
                 if (Input.GetMouseButtonUp(0))
                 {
-                    Debug.Log("p2attemptclick");
+                    //Debug.Log("p2attemptclick");
                     player2Score = powerMeter.value;
                     theGameTurn = GameTurn.CompareAttempts;
                 }
                 break;
 
             case GameTurn.CompareAttempts:
-                Debug.Log("GameTurn: Compare Attempts");
+                //Debug.Log("GameTurn: Compare Attempts");
                 if (player1Score >= player2Score)
                 {
                     bgRend.material.color = new Color(1.0f, 0.0f, 0.0f);
@@ -180,7 +180,7 @@ public class GameManager : MonoBehaviour
 
             case GameTurn.Player1Turn:
                 canTap = true;
-                Debug.Log("GameTurn: Player1 Turn");
+                //Debug.Log("GameTurn: Player1 Turn");
                 bgRend.material.color = new Color(1.0f, 0.0f, 0.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
 
             case GameTurn.Player2Turn:
                 canTap = true;
-                Debug.Log("GameTurn: Player2 Turn");
+                //Debug.Log("GameTurn: Player2 Turn");
                 bgRend.material.color = new Color(0.0f, 0.0f, 1.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {

@@ -4,7 +4,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Hierarchy References")]
     public GameObject Empty;
+    public Canvas canvas;
+
+    [Header("Main Camera (shake) Reference")]
+    public Camera camera;
+    public float duration = 2.0f;
+    public float slowDownAmount = 5.0f;
+    public float shakeStrengthModifier = 0.1f;
+    private bool shouldShake;
+    private Vector3 startPosition;
+    private float initialDuration;
+
+    CountdownTimer _countDownTimer;
     GameManager _gameManager;
     [Header("Hierarchy Objects")]
     public GameObject Player1;
@@ -21,19 +34,42 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _gameManager = Empty.GetComponent<GameManager>();
+        _countDownTimer = canvas.GetComponent<CountdownTimer>();
         Player1rb = Player1.GetComponent<Rigidbody2D>();
         Player2rb = Player2.GetComponent<Rigidbody2D>();
+
+        startPosition = camera.transform.localPosition;
+        initialDuration = duration;
     }
 
     void Update()
-    {  }
+    {
+        if (shouldShake && duration > 0)
+        {
+            camera.transform.localPosition = startPosition + Random.insideUnitSphere * _gameManager.pushStrength * shakeStrengthModifier;
+            duration -= Time.deltaTime * slowDownAmount;
+        }
+        else if (duration < 0)
+        {
+            //Debug.Log("camera shake resetting");
+            shouldShake = false;
+            duration = initialDuration;
+            camera.transform.localPosition = startPosition;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (this.gameObject == Player1)
         {
-            Debug.Log("PlayerController: Player1");
+            //Debug.Log("PlayerController: Player1");
+            _gameManager.sliderSpeedAdjust += 0.0025f;
+            if (_countDownTimer.timeLeftReset > 1)
+                _countDownTimer.timeLeftReset -= 1;
+            _countDownTimer.countdownFillDiv1 = _countDownTimer.timeLeftReset;
+
             Player1rb.AddForce(transform.up * -_gameManager.pushStrength, ForceMode2D.Impulse);
+            shouldShake = true;
             Player1ps.Play();
             _gameManager.theGameTurn = GameManager.GameTurn.Player1Turn;
             GameManager._boolPlayer1Turn = true;
@@ -41,8 +77,14 @@ public class PlayerController : MonoBehaviour
         else
         if (this.gameObject == Player2)
         {
-            Debug.Log("PLayerController: Player2");
+            //Debug.Log("PLayerController: Player2");
+            _gameManager.sliderSpeedAdjust += 0.0025f;
+            if (_countDownTimer.timeLeftReset > 2)
+                _countDownTimer.timeLeftReset -= 1;
+            _countDownTimer.countdownFillDiv1 = _countDownTimer.timeLeftReset;
+
             Player2rb.AddForce(transform.up * -_gameManager.pushStrength, ForceMode2D.Impulse);
+            shouldShake = true;
             Player2ps.Play();
             _gameManager.theGameTurn = GameManager.GameTurn.Player2Turn;
             GameManager._boolPlayer1Turn = false;
