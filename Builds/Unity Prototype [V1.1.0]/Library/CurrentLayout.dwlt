@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 36
+  controlID: 24
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 492}
   m_MaxSize: {x: 10002, y: 14042}
   vertical: 1
-  controlID: 84
+  controlID: 25
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 221}
   m_MaxSize: {x: 8006, y: 4021}
   vertical: 0
-  controlID: 85
+  controlID: 26
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -201,17 +201,17 @@ MonoBehaviour:
     y: 0
     width: 656
     height: 360
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 12}
+  m_MinSize: {x: 204, y: 221}
+  m_MaxSize: {x: 4004, y: 4021}
+  m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
   - {fileID: 15}
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 12}
-  m_Selected: 4
-  m_LastSelected: 2
+  m_Selected: 0
+  m_LastSelected: 4
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -322,7 +322,7 @@ MonoBehaviour:
       y: 17
       width: 652
       height: 322
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.48604974, y: 0.48604974}
     m_Translation: {x: 326, y: 161}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -330,10 +330,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -326
-      y: -161
-      width: 652
-      height: 322
+      x: -670.71326
+      y: -331.24182
+      width: 1341.4265
+      height: 662.48364
     m_MinimalGUI: 1
   m_defaultScale: 0.41927084
   m_TargetTexture: {fileID: 0}
@@ -371,9 +371,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 
-    m_LastClickedID: 0
-    m_ExpandedIDs: ee12caffa413caffcc15caffd615caff083acdffb43acdffdc3ccdffe63ccdffbefdd1ff825ed4ff40aed8ff1097daffd0f6dcff1a3cdeff56a4deff4e88dfff0634f3ffdc4cf6ff74abfbff7213fdff6cfbffff00000000
+    m_SelectedIDs: 602a0000
+    m_LastClickedID: 10848
+    m_ExpandedIDs: 9efbffff000000001c2a0000302a0000502a0000602a0000e22a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.997737, y: 0.31763297, z: -50.23384}
+    m_Target: {x: 1.5409694, y: 0.5064696, z: -50.166016}
     speed: 2
-    m_Value: {x: 2.997737, y: 0.31763297, z: -50.23384}
+    m_Value: {x: 1.5409694, y: 0.5064696, z: -50.166016}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -459,9 +459,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 17.161045
+    m_Target: 10.635447
     speed: 2
-    m_Value: 17.161045
+    m_Value: 10.635447
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -611,20 +611,20 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Art/Icons
+    - Assets
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Art/Icons
+  - Assets
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\tomgi\Documents\GitHub\mgp-mgp-group-6\Builds\Unity
-    Prototype [V1.0.2]
+    Prototype [V1.1.0]
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: e0290000
-    m_LastClickedID: 10720
-    m_ExpandedIDs: 00000000c4290000dc290000062a0000ffffff7f
+    m_SelectedIDs: 4e290000
+    m_LastClickedID: 10574
+    m_ExpandedIDs: 000000004e2900006829000092290000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -652,7 +652,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000c4290000dc290000062a0000
+    m_ExpandedIDs: 000000004e2900006829000092290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: e0210000d02b0000ae240000d0210000ee210000c01c0000f22100000405000036050000522200005a22000026220000fe210000f0230000ae1d0000f6210000f421000020050000bc240000ca230000d02300000c250000d6230000b069ffff025fffffb44dffff800efffface5ffff00000000ecf1ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
