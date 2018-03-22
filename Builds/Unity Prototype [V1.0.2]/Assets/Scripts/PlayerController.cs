@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     CountdownTimer _countDownTimer;
     GameManager _gameManager;
+    PowerUp _powerUp;
     [Header("Hierarchy Objects")]
     public GameObject Player1;
     public GameObject Player2;
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
     {
         _gameManager = Empty.GetComponent<GameManager>();
         _countDownTimer = canvas.GetComponent<CountdownTimer>();
+        _powerUp = Empty.GetComponent<PowerUp>();
         Player1rb = Player1.GetComponent<Rigidbody2D>();
         Player2rb = Player2.GetComponent<Rigidbody2D>();
 
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         if (this.gameObject == Player1)
         {
             //Debug.Log("PlayerController: Player1");
-            _gameManager.sliderSpeedAdjust += 0.0025f;
+            //_gameManager.sliderSpeedAdjust += 0.0025f;
             if (_countDownTimer.timeLeftReset > 1)
                 _countDownTimer.timeLeftReset -= 1;
             _countDownTimer.countdownFillDiv1 = _countDownTimer.timeLeftReset;
@@ -71,14 +73,28 @@ public class PlayerController : MonoBehaviour
             Player1rb.AddForce(transform.up * -_gameManager.pushStrength, ForceMode2D.Impulse);
             shouldShake = true;
             Player1ps.Play();
-            _gameManager.theGameTurn = GameManager.GameTurn.Player1Turn;
-            GameManager._boolPlayer1Turn = true;
+
+
+            if (_powerUp.isDoubleChance == false)
+            {
+                _gameManager.theGameTurn = GameManager.GameTurn.Player1Turn;
+                GameManager._boolPlayer1Turn = true;
+            }
+            if (_powerUp.isDoubleChance == true)
+            {
+                _gameManager.theGameTurn = GameManager.GameTurn.Player2Turn;
+                GameManager._boolPlayer1Turn = false;
+                _powerUp.isDoubleChance = false;
+            }
+
+            _powerUp.DecidePowerUp();
+            _powerUp.isPowerHit = false;
         }
         else
         if (this.gameObject == Player2)
         {
             //Debug.Log("PLayerController: Player2");
-            _gameManager.sliderSpeedAdjust += 0.0025f;
+            //_gameManager.sliderSpeedAdjust += 0.0025f;
             if (_countDownTimer.timeLeftReset > 2)
                 _countDownTimer.timeLeftReset -= 1;
             _countDownTimer.countdownFillDiv1 = _countDownTimer.timeLeftReset;
@@ -86,8 +102,21 @@ public class PlayerController : MonoBehaviour
             Player2rb.AddForce(transform.up * -_gameManager.pushStrength, ForceMode2D.Impulse);
             shouldShake = true;
             Player2ps.Play();
-            _gameManager.theGameTurn = GameManager.GameTurn.Player2Turn;
-            GameManager._boolPlayer1Turn = false;
+
+            if (_powerUp.isDoubleChance == false)
+            {
+                _gameManager.theGameTurn = GameManager.GameTurn.Player2Turn;
+                GameManager._boolPlayer1Turn = false;
+            }
+            if (_powerUp.isDoubleChance == true)
+            {
+                _gameManager.theGameTurn = GameManager.GameTurn.Player1Turn;
+                GameManager._boolPlayer1Turn = true;
+                _powerUp.isDoubleChance = false;
+            }
+          
+            _powerUp.DecidePowerUp();
+            _powerUp.isPowerHit = false;
         }
     }
 }

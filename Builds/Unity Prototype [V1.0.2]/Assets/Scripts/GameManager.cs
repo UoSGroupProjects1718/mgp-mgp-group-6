@@ -7,10 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager GMInstance;
+    PowerUp _powerUp;
 
     [Header("Hierarchy Objects")]
+    public GameObject Empty;
     public GameObject Player1;
+    private Rigidbody2D Player1rb;
     public GameObject Player2;
+    private Rigidbody2D Player2rb;
     public GameObject background;
     private MeshRenderer bgRend;
     public GameObject punchPrefab;
@@ -20,6 +24,7 @@ public class GameManager : MonoBehaviour
     private bool powerLevelRising;
     public float sliderValue;
     public float sliderSpeedAdjust;
+    private float player1yPos, player2yPos;
 
     [Header("Player Tap Value")]
     public float player1Score;
@@ -61,6 +66,9 @@ public class GameManager : MonoBehaviour
 
     void Start ()
     {
+        _powerUp = Empty.GetComponent<PowerUp>();
+        Player1rb = Player1.GetComponent<Rigidbody2D>();
+        Player2rb = Player2.GetComponent<Rigidbody2D>();
         restartButton = restartButton.GetComponent<Button>();
         canTap = true;
         theGameTurn = GameTurn.PreGame;
@@ -72,6 +80,7 @@ public class GameManager : MonoBehaviour
 	
 	void Update ()
     {
+        PlayerPositionYaxis();
         PowerMeterBounce();
 
         TurnDecider();
@@ -79,6 +88,15 @@ public class GameManager : MonoBehaviour
 
     void PowerMeterBounce()
     {
+        if (_boolPlayer1Turn == true)
+        {
+            sliderSpeedAdjust = player2yPos;
+        }
+        if (_boolPlayer1Turn == false)
+        {
+            sliderSpeedAdjust = player1yPos;
+        }
+
         if (powerLevelRising)
         {
             sliderValue += sliderSpeedAdjust;
@@ -95,7 +113,7 @@ public class GameManager : MonoBehaviour
             if (powerMeter.value <= 0.01)
                 powerLevelRising = true;
         }
-        if (sliderValue < 0.01)
+        if (sliderValue <= 0.01)
             sliderValue = 0.011f;
     }
 
@@ -166,14 +184,14 @@ public class GameManager : MonoBehaviour
                         player1TextBox.enabled = false;
                         player2TextBox.enabled = false;
                         _boolPlayer1Turn = true;
-                        theGameTurn = GameTurn.Player1Turn;
+                        theGameTurn = GameTurn.Player2Turn;
                     }
-                    else if (player2Score > player1Score)
+                    if (player2Score > player1Score)
                     {
                         player1TextBox.enabled = false;
                         player2TextBox.enabled = false;
                         _boolPlayer1Turn = false;
-                        theGameTurn = GameTurn.Player2Turn;
+                        theGameTurn = GameTurn.Player1Turn;
                     }
                 }
                 break;
@@ -184,9 +202,29 @@ public class GameManager : MonoBehaviour
                 bgRend.material.color = new Color(1.0f, 0.0f, 0.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {
-                    Instantiate(punchPrefab, Player1.transform.position + new Vector3(0, -1, 0), Quaternion.identity);
                     pushStrength = powerMeter.value * pushStrengthAdjust;
-                    theGameTurn = GameTurn.Punching;
+
+
+                    if (_powerUp.isRecover == false)
+                    {
+                        Instantiate(punchPrefab, Player1.transform.position + new Vector3(0, -1, 0), Quaternion.identity);
+
+                        if (_powerUp.isPowerHit)
+                        {
+                            pushStrength = pushStrength * 1.5f;
+                            _powerUp.isPowerHit = false;
+                        }
+                        theGameTurn = GameTurn.Punching;
+                    }
+
+                    if (_powerUp.isRecover == true)
+                    {
+                        Player1rb.AddForce(transform.up * -pushStrength * 1.75f, ForceMode2D.Impulse);
+                        _powerUp.isRecover = false;
+                        _boolPlayer1Turn = false;
+                        theGameTurn = GameTurn.Player2Turn;
+                        _powerUp.DecidePowerUp();
+                    }
                 }
                 if (Player1.transform.position.y >= 5.5)
                     theGameTurn = GameTurn.Player2Win;
@@ -200,9 +238,26 @@ public class GameManager : MonoBehaviour
                 bgRend.material.color = new Color(0.0f, 0.0f, 1.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {
-                    Instantiate(punchPrefab, Player2.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
                     pushStrength = powerMeter.value * pushStrengthAdjust;
-                    theGameTurn = GameTurn.Punching;
+
+                    if (_powerUp.isRecover == false)
+                    {
+                        Instantiate(punchPrefab, Player2.transform.position + new Vector3(0, 1, 0), Quaternion.identity);
+                        if (_powerUp.isPowerHit)
+                        {
+                            pushStrength = pushStrength * 1.5f;
+                        }
+                        theGameTurn = GameTurn.Punching;
+                    }
+
+                    if (_powerUp.isRecover == true)
+                    {
+                        Player2rb.AddForce(transform.up * pushStrength * 1.75f, ForceMode2D.Impulse);
+                        _powerUp.isRecover = false;
+                        _boolPlayer1Turn = true;
+                        theGameTurn = GameTurn.Player1Turn;
+                        _powerUp.DecidePowerUp();
+                    }
                 }
                 if (Player1.transform.position.y >= 5.5)
                     theGameTurn = GameTurn.Player2Win;
@@ -242,6 +297,91 @@ public class GameManager : MonoBehaviour
         }
     }
     #endregion
+
+    void PlayerPositionYaxis()
+    {
+        if (Player1.transform.position.y > 0)
+        {
+            player1yPos = 0.02f;
+        }
+
+        if (Player1.transform.position.y > 1.1)
+        {
+            player1yPos = 0.025f;
+        }
+
+        if (Player1.transform.position.y > 2)
+        {
+            player1yPos = 0.03f;
+        }
+
+        if (Player1.transform.position.y > 2.5)
+        {
+            player1yPos = 0.035f;
+        }
+
+        if (Player1.transform.position.y > 3)
+        {
+            player1yPos = 0.04f;
+        }
+
+        if (Player1.transform.position.y > 3.5)
+        {
+            player1yPos = 0.045f;
+        }
+
+        if (Player1.transform.position.y > 4)
+        {
+            player1yPos = 0.05f;
+        }
+
+        if (Player1.transform.position.y > 4.75)
+        {
+            player1yPos = 0.055f;
+        }
+
+        ///////////////////////////////////////
+
+        if (Player2.transform.position.y < 0)
+        {
+            player2yPos = 0.02f;
+        }
+
+        if (Player2.transform.position.y < -1.1)
+        {
+            player2yPos = 0.025f;
+        }
+
+        if (Player2.transform.position.y < -2)
+        {
+            player2yPos = 0.03f;
+        }
+
+        if (Player2.transform.position.y < -2.5)
+        {
+            player2yPos = 0.035f;
+        }
+
+        if (Player2.transform.position.y < -3)
+        {
+            player2yPos = 0.04f;
+        }
+
+        if (Player2.transform.position.y < -3.5)
+        {
+            player2yPos = 0.045f;
+        }
+
+        if (Player2.transform.position.y < -4)
+        {
+            player2yPos = 0.05f;
+        }
+
+        if (Player2.transform.position.y < -4.75)
+        {
+            player2yPos = 0.055f;
+        }
+    }
 
     public void ButtonRestart()
     {

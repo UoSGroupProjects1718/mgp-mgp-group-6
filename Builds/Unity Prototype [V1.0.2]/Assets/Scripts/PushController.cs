@@ -5,6 +5,7 @@ using UnityEngine;
 public class PushController : MonoBehaviour
 {
     private GameManager _gameManager;
+    private PowerUp _powerUp;
 
     [Header("Hierarchy Objects")]
     public GameObject Player1;
@@ -18,6 +19,7 @@ public class PushController : MonoBehaviour
     void Start ()
     {
         _gameManager = Empty.GetComponent<GameManager>();
+        _powerUp = Empty.GetComponent<PowerUp>();
         Player1rb = Player1.GetComponent<Rigidbody2D>();
         Player2rb = Player2.GetComponent<Rigidbody2D>();
     }

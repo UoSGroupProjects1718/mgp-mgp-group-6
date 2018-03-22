@@ -9,13 +9,14 @@ public class CountdownTimer : MonoBehaviour
     [Header("Game Manager")]
     public GameObject Empty;
     GameManager _gameManager;
+    PowerUp _powerUp;
 
     [Header("Coutdown UI")]
     private float tempTime = 0;
-    public int timeLeft = 10;
+    public int timeLeft; // 10
     public int timeLeftReset;
-    public float countdownFillDiv1 = 10;
-    private float countdown = 1f;
+    public float countdownFillDiv1; //10
+    private float countdown; //1f
     [Header("Coutdown UI P1")]
     public Text timerTextP1;
     public Image countdownFillP1;
@@ -28,6 +29,7 @@ public class CountdownTimer : MonoBehaviour
     void Start ()
     {
         _gameManager = Empty.GetComponent<GameManager>();
+        _powerUp = Empty.GetComponent<PowerUp>();
         timerTextP1.enabled = false;
         countdownFillP1.enabled = false;
         countdownFillBackgroundP1.enabled = false;
@@ -38,6 +40,9 @@ public class CountdownTimer : MonoBehaviour
 	
 	void Update ()
     {
+        if (timeLeftReset < 4)
+            timeLeftReset = 4;
+
         if (_gameManager.theGameTurn == GameManager.GameTurn.Player1Turn)
         {
             tempTime += Time.deltaTime;
@@ -66,6 +71,8 @@ public class CountdownTimer : MonoBehaviour
                 countdownFillBackgroundP1.enabled = false;
                 _gameManager.theGameTurn = GameManager.GameTurn.Player2Turn;
                 GameManager._boolPlayer1Turn = false;
+                _powerUp.player1PowerUpText.enabled = false;
+                _powerUp.DecidePowerUp();
                 timerTextP1.text = "0";
                 countdown = 1f;
                 timeLeft = timeLeftReset;
@@ -115,6 +122,8 @@ public class CountdownTimer : MonoBehaviour
                 countdownFillBackgroundP2.enabled = false;
                 _gameManager.theGameTurn = GameManager.GameTurn.Player1Turn;
                 GameManager._boolPlayer1Turn = true;
+                _powerUp.player2PowerUpText.enabled = false;
+                _powerUp.DecidePowerUp();
                 timerTextP2.text = "0";
                 countdown = 1f;
                 timeLeft = timeLeftReset;
