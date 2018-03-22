@@ -109,7 +109,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 492}
   m_MaxSize: {x: 14004, y: 14042}
   vertical: 0
-  controlID: 24
+  controlID: 11
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -312,7 +312,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoom: 0
     m_UniformScale: 1
     m_UpDirection: 1
@@ -322,7 +322,7 @@ MonoBehaviour:
       y: 17
       width: 652
       height: 322
-    m_Scale: {x: 0.48604974, y: 0.48604974}
+    m_Scale: {x: 1, y: 1}
     m_Translation: {x: 326, y: 161}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -330,10 +330,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -670.71326
-      y: -331.24182
-      width: 1341.4265
-      height: 662.48364
+      x: -326
+      y: -161
+      width: 652
+      height: 322
     m_MinimalGUI: 1
   m_defaultScale: 0.41927084
   m_TargetTexture: {fileID: 0}
@@ -371,9 +371,9 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 602a0000
-    m_LastClickedID: 10848
-    m_ExpandedIDs: 9efbffff000000001c2a0000302a0000502a0000602a0000e22a0000
+    m_SelectedIDs: 902a0000
+    m_LastClickedID: 10896
+    m_ExpandedIDs: 2893ffff9efbffff000000001c2a0000502a0000602a0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -429,9 +429,9 @@ MonoBehaviour:
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 1.5409694, y: 0.5064696, z: -50.166016}
+    m_Target: {x: 1.405874, y: -0.90907204, z: -50.157745}
     speed: 2
-    m_Value: {x: 1.5409694, y: 0.5064696, z: -50.166016}
+    m_Value: {x: 1.405874, y: -0.90907204, z: -50.157745}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -459,9 +459,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 10.635447
+    m_Target: 9.787034
     speed: 2
-    m_Value: 10.635447
+    m_Value: 9.787034
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -611,19 +611,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Art
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Art
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\tomgi\Documents\GitHub\mgp-mgp-group-6\Builds\Unity
     Prototype [V1.1.0]
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 4e290000
-    m_LastClickedID: 10574
+    m_SelectedIDs: 92290000
+    m_LastClickedID: 10642
     m_ExpandedIDs: 000000004e2900006829000092290000ffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -679,7 +679,7 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
+    m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: e0210000d02b0000ae240000d0210000ee210000c01c0000f22100000405000036050000522200005a22000026220000fe210000f0230000ae1d0000f6210000f421000020050000bc240000ca230000d02300000c250000d6230000b069ffff025fffffb44dffff800efffface5ffff00000000ecf1ffff
     m_RenameOverlay:
       m_UserAcceptedRename: 0
