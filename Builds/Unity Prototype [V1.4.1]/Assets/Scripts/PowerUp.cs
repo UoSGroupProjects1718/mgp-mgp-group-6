@@ -89,7 +89,7 @@ public class PowerUp : MonoBehaviour
                     player2PowerUpText.enabled = false;
                     player1PowerUpText.text = "POWER HIT!";
                     player1PowerUpText.enabled = true;
-                    player1PowerUpText.color = new Color(255f, 0f, 0f, 1f);
+                    player1PowerUpText.color = new Color(0.522f, 0.078f, 0.294f, 1f);
                     player1PowerUpImage.sprite = powerHit;
                     player1PowerUpImage.enabled = true;
                 }
@@ -99,7 +99,7 @@ public class PowerUp : MonoBehaviour
                     player1PowerUpText.enabled = false;
                     player2PowerUpText.text = "POWER HIT!";
                     player2PowerUpText.enabled = true;
-                    player2PowerUpText.color = new Color(255f, 0f, 0f, 1f);
+                    player2PowerUpText.color = new Color(0.522f, 0.078f, 0.294f, 1f);
                     player2PowerUpImage.sprite = powerHit;
                     player2PowerUpImage.enabled = true;
                 }
@@ -119,10 +119,10 @@ public class PowerUp : MonoBehaviour
                 {
                     player2PowerUpImage.enabled = false;
                     player2PowerUpText.enabled = false;
-                    player1PowerUpText.text = "DOUBLE CHANCE!";
+                    player1PowerUpText.text = "EXTRA TURN!";
                     player1PowerUpText.enabled = true;
                     player1PowerUpText.color = new Color(0f, 0f, 0f, 1f);
-                    player1PowerUpText.color = new Color(255f, 255f, 0f, 1f);
+                    player1PowerUpText.color = new Color(0f, 0.122f, 0.247f, 1f);
                     player1PowerUpImage.sprite = extraTurn;
                     player1PowerUpImage.enabled = true;
                 }
@@ -130,10 +130,10 @@ public class PowerUp : MonoBehaviour
                 {
                     player1PowerUpImage.enabled = false;
                     player1PowerUpText.enabled = false;
-                    player2PowerUpText.text = "DOUBLE CHANCE!";
+                    player2PowerUpText.text = "EXTRA TURN!";
                     player2PowerUpText.enabled = true;
                     player2PowerUpText.color = new Color(0f, 0f, 0f, 1f);
-                    player2PowerUpText.color = new Color(255f, 255f, 0f, 1f);
+                    player2PowerUpText.color = new Color(0f, 0.122f, 0.247f, 1f);
                     player2PowerUpImage.sprite = extraTurn;
                     player2PowerUpImage.enabled = true;
                 }
@@ -155,7 +155,7 @@ public class PowerUp : MonoBehaviour
                     player2PowerUpText.enabled = false;
                     player1PowerUpText.text = "RECOVERY!";
                     player1PowerUpText.enabled = true;
-                    player1PowerUpText.color = new Color(0f, 255f, 0f, 1f);
+                    player1PowerUpText.color = new Color(0f, 0.5f, 0f, 1f);
                     player1PowerUpImage.sprite = recovery;
                     player1PowerUpImage.enabled = true;
                 }
@@ -165,7 +165,7 @@ public class PowerUp : MonoBehaviour
                     player1PowerUpText.enabled = false;
                     player2PowerUpText.text = "RECOVERY!";
                     player2PowerUpText.enabled = true;
-                    player2PowerUpText.color = new Color(0f, 255f, 0f, 1f);
+                    player2PowerUpText.color = new Color(0f, 0.5f, 0f, 1f);
                     player2PowerUpImage.sprite = recovery;
                     player2PowerUpImage.enabled = true;
                 }

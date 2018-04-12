@@ -31,10 +31,10 @@ public class ScenesManager : MonoBehaviour
     public Button restartGame;
     public Button goHome;
 
-    public Canvas testcanvas;
+    //public Canvas testcanvas;
 
-    public bool isQuitMenu;
-    public bool isSettingsMenu;
+    public bool isQuitMenu = false;
+    public bool isSettingsMenu = false;
 
 
     #region sceneManager singleton
@@ -61,16 +61,14 @@ public class ScenesManager : MonoBehaviour
         quitMenu = quitMenu.GetComponent<Image>();
         quitYes = quitYes.GetComponent<Button>();
         quitNo = quitNo.GetComponent<Button>();
-        quitCanvas.enabled = false;
-        isQuitMenu = false;
+
 
         settingsCanvas = settingsCanvas.GetComponent<Canvas>();
         settingsMenu = settingsMenu.GetComponent<Image>();
         volumeControl = volumeControl.GetComponent<Slider>();
         settingsDone = settingsDone.GetComponent<Button>();
-        settingsCanvas.enabled = false;
         volumeControl.value = 0.5f;
-        isSettingsMenu = false;
+
 
         instructionsForward = instructionsForward.GetComponent<Button>();
         instructionsBackward = instructionsBackward.GetComponent<Button>();
@@ -78,6 +76,11 @@ public class ScenesManager : MonoBehaviour
 
         restartGame = restartGame.GetComponent<Button>();
         goHome = goHome.GetComponent<Button>();
+
+        quitCanvas.enabled = false;
+        isQuitMenu = true;
+        isSettingsMenu = true;
+        settingsCanvas.enabled = false;
     }
 
     void Update()

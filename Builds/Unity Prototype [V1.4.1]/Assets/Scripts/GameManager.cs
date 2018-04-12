@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
     public Text player2DeciderResultText;
     public Text P1sliderResultText;
     public Text P2sliderResultText;
+    public Text P1TurnText;
+    public Text P2TurnText;
     public Button restartButton;
     public Button homeButton;
 
@@ -91,6 +93,8 @@ public class GameManager : MonoBehaviour
         P2sliderResultText.enabled = false;
         player1DeciderResultText.enabled = false;
         player2DeciderResultText.enabled = false;
+        P1TurnText.enabled = false;
+        P2TurnText.enabled = false;
     }
 	
 	void Update ()
@@ -139,8 +143,8 @@ public class GameManager : MonoBehaviour
         {
             case GameTurn.PreGame:
                 //Debug.Log("GameTurn: PreGame");
-                player1TextBox.text = "Best score goes first...";
-                player2TextBox.text = "Best score goes first...";
+                player1TextBox.text = "Best score goes first. . .";
+                player2TextBox.text = "Best score goes first. . .";
                 preGameCountdown -= Time.deltaTime;
                 if (preGameCountdown < 0)
                     theGameTurn = GameTurn.DecideTurnPlayer1;
@@ -240,11 +244,14 @@ public class GameManager : MonoBehaviour
 
             case GameTurn.Player1Turn:
                 P2sliderResultText.enabled = false;
+                P1TurnText.enabled = true;
                 canTap = true;
                 //Debug.Log("GameTurn: Player1 Turn");
                 bgRend.material.color = new Color(1.0f, 0.0f, 0.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {
+                    P1TurnText.enabled = false;
+
                     //pushStrength = powerMeter.value * pushStrengthAdjust;
                     SliderScoreThreshold();
 
@@ -285,11 +292,14 @@ public class GameManager : MonoBehaviour
 
             case GameTurn.Player2Turn:
                 P1sliderResultText.enabled = false;
+                P2TurnText.enabled = true;
                 canTap = true;
                 //Debug.Log("GameTurn: Player2 Turn");
                 bgRend.material.color = new Color(0.0f, 0.0f, 1.0f);
                 if (Input.GetMouseButtonUp(0) && canTap)
                 {
+                    P2TurnText.enabled = false;
+
                     //pushStrength = powerMeter.value * pushStrengthAdjust;
                     SliderScoreThreshold();
 
@@ -459,7 +469,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(0);
-                P1sliderResultText.text = "bad";
+                P1sliderResultText.text = "b a d";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -467,20 +477,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(0);
-                P2sliderResultText.text = "bad";
+                P2sliderResultText.text = "b a d";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "bad";
+                player1DeciderResultText.text = "b a d";
                 player1DeciderResultText.enabled = true;
                 player1Score = 0;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "bad";
+                player2DeciderResultText.text = "b a d";
                 player2DeciderResultText.enabled = true;
                 player2Score = 0;
             }
@@ -493,7 +503,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(1);
-                P1sliderResultText.text = "good";
+                P1sliderResultText.text = "g o o d";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -501,20 +511,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(1);
-                P2sliderResultText.text = "good";
+                P2sliderResultText.text = "g o o d";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "good";
+                player1DeciderResultText.text = "g o o d";
                 player1DeciderResultText.enabled = true;
                 player1Score = 1;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "good";
+                player2DeciderResultText.text = "g o o d";
                 player2DeciderResultText.enabled = true;
                 player2Score = 1;
             }
@@ -526,7 +536,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(2);
-                P1sliderResultText.text = "great";
+                P1sliderResultText.text = "g r e a t";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -534,20 +544,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(2);
-                P2sliderResultText.text = "great";
+                P2sliderResultText.text = "g r e a t";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "great";
+                player1DeciderResultText.text = "g r e a t";
                 player1DeciderResultText.enabled = true;
                 player1Score = 2;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "great";
+                player2DeciderResultText.text = "g r e a t";
                 player2DeciderResultText.enabled = true;
                 player2Score = 2;
             }
@@ -559,7 +569,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(3);
-                P1sliderResultText.text = "perfect!";
+                P1sliderResultText.text = "p e r f e c t!";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -567,20 +577,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(3);
-                P2sliderResultText.text = "perfect!";
+                P2sliderResultText.text = "p e r f e c t!";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "perfect!";
+                player1DeciderResultText.text = "p e r f e c t!";
                 player1DeciderResultText.enabled = true;
                 player1Score = 3;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "perfect!";
+                player2DeciderResultText.text = "p e r f e c t!";
                 player2DeciderResultText.enabled = true;
                 player2Score = 3;
             }
@@ -592,7 +602,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(2);
-                P1sliderResultText.text = "great";
+                P1sliderResultText.text = "g r e a t";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -600,20 +610,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(2);
-                P2sliderResultText.text = "great";
+                P2sliderResultText.text = " g r e a t";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "great";
+                player1DeciderResultText.text = "g r e a t";
                 player1DeciderResultText.enabled = true;
                 player1Score = 2;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "great";
+                player2DeciderResultText.text = "g r e a t";
                 player2DeciderResultText.enabled = true;
                 player2Score = 2;
             }
@@ -625,7 +635,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(1);
-                P1sliderResultText.text = "good";
+                P1sliderResultText.text = "g o o d";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -633,20 +643,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(1);
-                P2sliderResultText.text = "good";
+                P2sliderResultText.text = "g o o d";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "good";
+                player1DeciderResultText.text = "g o o d";
                 player1DeciderResultText.enabled = true;
                 player1Score = 1;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "good";
+                player2DeciderResultText.text = "g o o d";
                 player2DeciderResultText.enabled = true;
                 player2Score = 1;
             }
@@ -658,7 +668,7 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player1Turn)
             {
                 _audioManager.PlayAudio(0);
-                P1sliderResultText.text = "bad";
+                P1sliderResultText.text = "b a d";
                 P1sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P1sliderResultText.enabled = false;
@@ -666,20 +676,20 @@ public class GameManager : MonoBehaviour
             if (theGameTurn == GameTurn.Player2Turn)
             {
                 _audioManager.PlayAudio(0);
-                P2sliderResultText.text = "bad";
+                P2sliderResultText.text = "b a d";
                 P2sliderResultText.enabled = true;
                 //StartCoroutine(SliderResultText());
                 //P2sliderResultText.enabled = false;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer1)
             {
-                player1DeciderResultText.text = "bad";
+                player1DeciderResultText.text = "b a d";
                 player1DeciderResultText.enabled = true;
                 player1Score = 0;
             }
             if (theGameTurn == GameTurn.DecideTurnPlayer2)
             {
-                player2DeciderResultText.text = "bad";
+                player2DeciderResultText.text = "b a d";
                 player2DeciderResultText.enabled = true;
                 player2Score = 0;
             }
