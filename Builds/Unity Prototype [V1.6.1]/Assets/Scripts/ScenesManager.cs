@@ -31,8 +31,6 @@ public class ScenesManager : MonoBehaviour
     public Button restartGame;
     public Button goHome;
 
-    //public Canvas testcanvas;
-
     public bool isQuitMenu = false;
     public bool isSettingsMenu = false;
 
